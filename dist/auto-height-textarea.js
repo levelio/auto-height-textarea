@@ -14,7 +14,7 @@
         if (document.addEventListener) {
             addEven = function (ele,type,callback) {ele.addEventListener(type, callback, false);};
         } else {
-            addEven = function (ele,type,callback) {ele.attachEvent(type, callback);};
+            addEven = function (ele,type,callback) {ele.attachEvent('on' + type, callback);};
         }
         addEven(ele,type,callback);
     };
@@ -25,7 +25,7 @@
         if (isEmpty(dom.value)) {
             dom.style.height = dom.scrollHeight - diff + "px";
         }
-        dom.addEventListener("input", function (e) {
+        addEven(dom,"input", function (e) {
             var event = e || window.event;
             var target = event.target || event.srcElement;
             target.style.height = "0";
